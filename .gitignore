@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Config & secrets — NEVER commit real pod credentials
+config.toml
+config.local.toml
+.env
+*.pem
+*.key
+
+# Audit logs (per-deployment runtime data)
+audit/
+*.audit.jsonl
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
