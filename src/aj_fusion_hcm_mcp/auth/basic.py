@@ -1,7 +1,7 @@
 """HTTP Basic auth provider with OS-credential-store fallback.
 
 Password precedence: explicit config/env value, else the OS credential store
-(via ``keyring``) under service ``aj-fusion-hcm-mcp``. This lets Claude Desktop
+(via ``keyring``) under service ``fusion-hcm-mcp-server``. This lets Claude Desktop
 run without a plaintext password on disk. For development; use OAuth2 in prod.
 """
 
@@ -11,7 +11,7 @@ import base64
 
 from ..core.errors import ConfigError
 
-KEYRING_SERVICE = "aj-fusion-hcm-mcp"
+KEYRING_SERVICE = "fusion-hcm-mcp-server"
 
 
 def keyring_password(username: str | None) -> str | None:

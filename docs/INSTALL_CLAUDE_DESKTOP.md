@@ -57,11 +57,11 @@ pip install ".[desktop]"
 ### A2. Store the password in the OS credential store
 
 ```bash
-keyring set aj-fusion-hcm-mcp INTEGRATION_USER
+keyring set fusion-hcm-mcp-server INTEGRATION_USER
 # prompts for the password; stored in macOS Keychain / Windows Credential Manager
 ```
 
-(`aj-fusion-hcm-mcp` is the service name the server looks up; the second
+(`fusion-hcm-mcp-server` is the service name the server looks up; the second
 argument must equal the username you configure below.)
 
 ### A3. Create `config.toml`
@@ -81,7 +81,7 @@ username = "INTEGRATION_USER"
 ### A4. Sanity-check from a terminal (before touching Desktop)
 
 ```bash
-.venv/bin/aj-fusion-hcm-mcp     # Windows: .venv\Scripts\aj-fusion-hcm-mcp.exe
+.venv/bin/fusion-hcm-mcp-server     # Windows: .venv\Scripts\fusion-hcm-mcp-server.exe
 ```
 
 It should start silently (stdio servers print nothing). `Ctrl+C` to stop. A
@@ -91,8 +91,8 @@ It should start silently (stdio servers print nothing). `Ctrl+C` to stop. A
 
 Find the absolute path of the console script:
 
-- macOS/Linux: `realpath .venv/bin/aj-fusion-hcm-mcp`
-- Windows: `(Resolve-Path .venv\Scripts\aj-fusion-hcm-mcp.exe).Path`
+- macOS/Linux: `realpath .venv/bin/fusion-hcm-mcp-server`
+- Windows: `(Resolve-Path .venv\Scripts\fusion-hcm-mcp-server.exe).Path`
 
 **Fully quit Claude Desktop first** (see Traps below), then edit:
 
@@ -103,7 +103,7 @@ Find the absolute path of the console script:
 {
   "mcpServers": {
     "oracle-fusion-hcm": {
-      "command": "/ABSOLUTE/PATH/TO/.venv/bin/aj-fusion-hcm-mcp",
+      "command": "/ABSOLUTE/PATH/TO/.venv/bin/fusion-hcm-mcp-server",
       "env": {
         "CONFIG_FILE": "/ABSOLUTE/PATH/TO/fusion-hcm-mcp-server-main/config.toml"
       }
@@ -123,7 +123,7 @@ store.
 
 ```bash
 cd fusion-hcm-mcp-server-main
-docker build -t aj-fusion-hcm-mcp:latest .
+docker build -t fusion-hcm-mcp-server:latest .
 ```
 
 ### B2. Create `config.toml` (as in A3, but no password anywhere)
@@ -143,7 +143,7 @@ docker build -t aj-fusion-hcm-mcp:latest .
         "-e", "HCM_AUDIT_PATH=/app/audit/audit.jsonl",
         "-v", "/ABSOLUTE/PATH/TO/config.toml:/app/config.toml:ro",
         "-v", "/ABSOLUTE/PATH/TO/audit-dir:/app/audit",
-        "aj-fusion-hcm-mcp:latest"
+        "fusion-hcm-mcp-server:latest"
       ],
       "env": {
         "HCM_PASSWORD": "the-integration-user-password"

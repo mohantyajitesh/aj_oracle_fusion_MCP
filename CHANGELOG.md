@@ -28,7 +28,7 @@ First public release.
 - Auth: Basic (password via OS credential store through `keyring`, no
   plaintext) and OAuth2 client-credentials; corporate TLS-inspection support
   via guarded `truststore`.
-- Packaging: hatchling wheel, `aj-fusion-hcm-mcp` console script, multi-stage
+- Packaging: hatchling wheel, `fusion-hcm-mcp-server` console script, multi-stage
   non-root Docker image; stdio and streamable-HTTP transports.
 - 60 offline unit tests; install guide for Claude Desktop (venv and Docker
   modes); design doc with pod-verified ADF ground truth.

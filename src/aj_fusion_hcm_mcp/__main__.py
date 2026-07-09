@@ -1,4 +1,4 @@
-"""Console entry point: ``aj-fusion-hcm-mcp``."""
+"""Console entry point: ``fusion-hcm-mcp-server``."""
 
 from __future__ import annotations
 

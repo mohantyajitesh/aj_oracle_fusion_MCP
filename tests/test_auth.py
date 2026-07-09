@@ -39,7 +39,7 @@ def test_missing_password_everywhere_raises(monkeypatch):
     monkeypatch.setattr(auth_pkg, "keyring_password", lambda u: None)
     with pytest.raises(ConfigError) as exc:
         build_auth(AuthConfig(type="basic", username="u", password=None))
-    assert "aj-fusion-hcm-mcp" in str(exc.value)  # names the keyring service
+    assert "fusion-hcm-mcp-server" in str(exc.value)  # names the keyring service
 
 
 def test_keyring_password_never_raises():

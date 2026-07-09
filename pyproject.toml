@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "aj-fusion-hcm-mcp"
+name = "fusion-hcm-mcp-server"
 version = "0.1.0"
 description = "MCP server for Oracle Fusion Cloud HCM — generic, capability-aware, safe-by-default."
 readme = "README.md"
@@ -45,7 +45,7 @@ Changelog = "https://github.com/mohantyajitesh/fusion-hcm-mcp-server/blob/main/C
 Issues = "https://github.com/mohantyajitesh/fusion-hcm-mcp-server/issues"
 
 [project.scripts]
-aj-fusion-hcm-mcp = "aj_fusion_hcm_mcp.__main__:main"
+fusion-hcm-mcp-server = "aj_fusion_hcm_mcp.__main__:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/aj_fusion_hcm_mcp"]

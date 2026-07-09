@@ -82,12 +82,12 @@ never the committed file. See [config.example.toml](config.example.toml).
 ### Run with Docker (primary)
 
 ```bash
-docker build -t aj-fusion-hcm-mcp .
+docker build -t fusion-hcm-mcp-server .
 docker run --rm -i \
   -e HCM_BASE_URL="https://your-pod.fa.ocs.oraclecloud.com" \
   -e HCM_USERNAME="INTEGRATION_USER" -e HCM_PASSWORD="..." \
   -v "$PWD/config.toml:/app/config.toml:ro" \
-  aj-fusion-hcm-mcp
+  fusion-hcm-mcp-server
 ```
 
 For hosted HTTP transport, set `transport.type = "http"` (or `HCM_TRANSPORT=http`) and publish `-p 8000:8000`.
@@ -100,7 +100,7 @@ Requires **Python 3.11+**.
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
-aj-fusion-hcm-mcp          # runs the MCP server over stdio
+fusion-hcm-mcp-server          # runs the MCP server over stdio
 ```
 
 ## Documentation

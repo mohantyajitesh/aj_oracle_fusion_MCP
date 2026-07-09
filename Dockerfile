@@ -24,4 +24,4 @@ ENV HCM_AUDIT_PATH=/app/audit/audit.jsonl
 # For HTTP transport (transport.type = "http"); ignored for stdio.
 EXPOSE 8000
 
-ENTRYPOINT ["aj-fusion-hcm-mcp"]
+ENTRYPOINT ["fusion-hcm-mcp-server"]
