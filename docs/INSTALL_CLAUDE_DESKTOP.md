@@ -36,9 +36,16 @@ There are two supported ways to run the server. Pick one:
 
 No plaintext password anywhere on disk.
 
-### A1. Create the venv and install
+### A1. Install
 
-macOS / Linux:
+Easiest — from PyPI with pipx (no clone needed):
+```bash
+pipx install "fusion-hcm-mcp-server[desktop]"   # includes keyring + truststore
+```
+Then use `which fusion-hcm-mcp-server` (Windows: `where fusion-hcm-mcp-server`)
+as the command path in step A5.
+
+Or from a source checkout — macOS / Linux:
 ```bash
 cd fusion-hcm-mcp-server-main
 python3 -m venv .venv

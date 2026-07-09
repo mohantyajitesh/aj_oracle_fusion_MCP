@@ -64,6 +64,14 @@ Packaged as a Docker/OCI image (primary) built from a hatchling wheel.
 
 ## Getting started
 
+### Install from PyPI
+
+```bash
+pipx install fusion-hcm-mcp-server    # or: uvx fusion-hcm-mcp-server
+```
+
+[pypi.org/project/fusion-hcm-mcp-server](https://pypi.org/project/fusion-hcm-mcp-server/) — published from this repo's CI via PyPI Trusted Publishing with attestations.
+
 > **Want to use this from Claude Desktop?** Follow the step-by-step guide:
 > **[docs/INSTALL_CLAUDE_DESKTOP.md](docs/INSTALL_CLAUDE_DESKTOP.md)** — covers
 > both install modes (Python venv + OS credential store, or Docker), the
