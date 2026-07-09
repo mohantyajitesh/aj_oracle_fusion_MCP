@@ -80,6 +80,10 @@ def register(mcp: FastMCP, ctx: ServerContext) -> None:
         for update/delete. With ``dry_run=True`` (default) returns a preview and
         writes nothing. Set ``dry_run=False`` to commit. Payloads are validated
         against the live schema (unknown/read-only attributes are rejected).
+
+        LIMITATION: writes do not support effective-dating — date-effective
+        resources (workers, assignments) commit with the pod's default
+        effective date. Do not use for retroactive or future-dated changes.
         """
         if not ctx.config.features.writes_enabled:
             return _WRITES_OFF

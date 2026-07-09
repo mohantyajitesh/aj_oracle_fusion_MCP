@@ -1,4 +1,6 @@
-# Oracle Fusion HCM MCP Server
+# HCM MCP Server for Oracle Fusion Cloud (unofficial)
+
+> *Not affiliated with or endorsed by Oracle. Oracle and Fusion are trademarks of Oracle Corporation.*
 
 An [MCP](https://modelcontextprotocol.io) server that lets AI models interact with **Oracle Fusion Cloud HCM** across its entire REST surface — workers, org structures, compensation, absence, payroll, recruiting, talent, learning and more — without hand-coding a tool per endpoint.
 
@@ -28,7 +30,7 @@ This server takes the opposite approach: **a small set of generic, schema-aware 
 auth/     Basic + OAuth2/JWT (OCI IAM / IDCS)
 core/     ADF REST client · resource catalog · /describe cache · q= filter builder
 tools/    discovery · query · workflows · mutate · atom · bip
-safety/   PII redaction · audit log · dry-run · confirm gates
+safety/   PII redaction · audit log · dry-run gates (writes off by default, schema-validated, fail closed)
 config.py base URL · pinned REST version · scopes · feature & module flags
 ```
 
@@ -92,6 +94,8 @@ For hosted HTTP transport, set `transport.type = "http"` (or `HCM_TRANSPORT=http
 
 ### Local development
 
+Requires **Python 3.11+**.
+
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
@@ -107,8 +111,12 @@ aj-fusion-hcm-mcp          # runs the MCP server over stdio
 
 ## Status & contributions
 
-This is an actively developing project. The design doc is the source of truth; see open questions in [DESIGN.md §10](DESIGN.md).
+This is an actively developing project — issues and PRs from people testing against their own pods are genuinely wanted. See [CONTRIBUTING.md](CONTRIBUTING.md); for vulnerabilities, [SECURITY.md](SECURITY.md). The design doc is the source of truth.
 
 ## License
 
-TBD.
+[Apache-2.0](LICENSE). See also [NOTICE](NOTICE).
+
+---
+
+*Not affiliated with or endorsed by Oracle. Oracle and Fusion are trademarks of Oracle Corporation.*

@@ -7,10 +7,12 @@ name = "aj-fusion-hcm-mcp"
 version = "0.1.0"
 description = "MCP server for Oracle Fusion Cloud HCM — generic, capability-aware, safe-by-default."
 readme = "README.md"
+license = { text = "Apache-2.0" }
 requires-python = ">=3.11"
 authors = [{ name = "Ajitesh Mohanty", email = "mohantyajitesh@gmail.com" }]
 keywords = ["mcp", "oracle", "fusion", "hcm", "model-context-protocol"]
 classifiers = [
+  "License :: OSI Approved :: Apache Software License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",

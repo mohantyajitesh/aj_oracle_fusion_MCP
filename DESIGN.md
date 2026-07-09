@@ -1,4 +1,6 @@
-# Oracle Fusion HCM MCP Server — Technical Design
+# HCM MCP Server for Oracle Fusion Cloud (unofficial) — Technical Design
+
+> *Not affiliated with or endorsed by Oracle. Oracle and Fusion are trademarks of Oracle Corporation.*
 
 **Status:** Draft for review
 **Date:** 2026-06-30
@@ -395,5 +397,8 @@ Design rules that keep it reusable:
 - **(c) HTTP transport is unauthenticated** — stdio only for production; HTTP/SSE is for trusted-network/dev use.
 - **(d) Audit is local and untampered** — ship the JSONL to a SIEM for compliance retention/integrity.
 - **(e) Redaction is keyword/substring-based** — over-redacts some fields (e.g. `SalaryBasisType`), under-redacts non-matching custom fields. Acceptable and documented; tune keywords per deployment.
+- **(f) Writes do not support effective-date** — the `Effective-Of` header is implemented on read paths only. Date-effective updates (workers, assignments) commit with the pod's default effective date. Do not use writes for retroactive/future-dated changes until this lands.
+- **(g) No ETag/If-Match optimistic locking on update/delete** — concurrent modification of the same record is last-write-wins from this server's perspective. Whether target resources enforce ETags should be verified per pod and documented per deployment.
+- **(h) Write retries on 429/503** — `_request` may retry a POST after a proxy-level 503; if Oracle processed the original, a create could duplicate. Mitigation (no-retry-on-create or idempotency guard) is backlog.
 
-**Tested auth:** basic (dev). **Deferred:** per-user delegated identity, capability enforcement, authenticated HTTP transport, SIEM audit shipping.
+**Tested auth:** basic (dev). **Deferred:** per-user delegated identity, capability enforcement, authenticated HTTP transport, SIEM audit shipping, effective-dated writes (f), optimistic locking (g), create-retry idempotency (h).

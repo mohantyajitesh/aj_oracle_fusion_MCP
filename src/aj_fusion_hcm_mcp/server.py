@@ -12,6 +12,7 @@ from urllib.parse import urlsplit
 
 from mcp.server.fastmcp import FastMCP
 
+from . import __version__
 from .auth import build_auth
 from .config import Config, load_config
 from .context import ServerContext
@@ -49,6 +50,9 @@ def build_server(config: Config | None = None) -> tuple[FastMCP, ServerContext]:
     cfg = config or load_config()
     ctx = build_context(cfg)
     mcp = FastMCP("aj-oracle-fusion-hcm")
+    # Report the package's own version in the MCP handshake (default would be
+    # the mcp SDK's version — misleading in registry listings and client UIs).
+    mcp._mcp_server.version = __version__
 
     @mcp.tool()
     def server_info() -> dict[str, object]:
