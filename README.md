@@ -63,6 +63,11 @@ Packaged as a Docker/OCI image (primary) built from a hatchling wheel.
 
 ## Getting started
 
+> **Want to use this from Claude Desktop?** Follow the step-by-step guide:
+> **[docs/INSTALL_CLAUDE_DESKTOP.md](docs/INSTALL_CLAUDE_DESKTOP.md)** — covers
+> both install modes (Python venv + OS credential store, or Docker), the
+> Desktop config file, a test sequence, and the common traps.
+
 ### Configure
 
 ```bash
@@ -97,7 +102,9 @@ aj-fusion-hcm-mcp          # runs the MCP server over stdio
 
 ## Documentation
 
-- **[DESIGN.md](DESIGN.md)** — full technical design: auth, the ADF REST client, exact tool signatures, the `q=` filter grammar, the safety model, and licensing/module alignment.
+- **[docs/INSTALL_CLAUDE_DESKTOP.md](docs/INSTALL_CLAUDE_DESKTOP.md)** — install & run with Claude Desktop (venv or Docker), verification sequence, troubleshooting traps.
+- **[docs/TEST_CASES.md](docs/TEST_CASES.md)** — tool matrix, automated coverage, the live-pod checklist, production-readiness assessment.
+- **[DESIGN.md](DESIGN.md)** — full technical design: auth, the ADF REST client, exact tool signatures, the `q=` filter grammar, the safety model, ADF ground truth, and licensing/module alignment.
 
 ## Status & contributions
 
