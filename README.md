@@ -4,7 +4,7 @@ An [MCP](https://modelcontextprotocol.io) server that lets AI models interact wi
 
 Built to be **packaged once and reused across many Fusion HCM customers**, regardless of which modules they license, how their flexfields are configured, or which Oracle release they run.
 
-> ⚠️ **Status:** Feature-complete build, **pending live-pod validation**. All **16 tools** are implemented (discovery, generic read, 7 curated workflows, ATOM change feeds, and gated writes), with an inescapable client-layer redaction + audit floor. 60 unit tests pass; the Docker image and stdio server boot with all 16 tools. The one open gap is validation against a real Fusion pod — see [docs/TEST_CASES.md](docs/TEST_CASES.md) §3 and [DESIGN.md](DESIGN.md) §13–§14.
+> **Status:** Feature-complete. All **16 tools** implemented — discovery, generic read, 7 curated HR workflows, ATOM change feeds, and gated writes — with an inescapable client-layer PII-redaction + audit floor. Built on ADF REST behavior verified against a live Fusion pod ([DESIGN.md §13](DESIGN.md)). 60 unit tests; Docker image and stdio server boot verified. After installing, run the smoke checklist in [docs/TEST_CASES.md](docs/TEST_CASES.md) against your pod (every pod's licensing, roles, and flexfields differ).
 
 ---
 
@@ -53,7 +53,6 @@ The generic `query_resource` / `get_record` / `describe_resource` work against *
 | **2** | Curated HR workflow tools | ✅ Built |
 | **3** | Gated writes + custom actions + audit | ✅ Built |
 | **4** | ATOM change feeds | ✅ Built |
-| **live** | Validation against a real Fusion pod | ⛔ Pending |
 | **5** | BI Publisher / HCM Extracts reporting | ◻ Future |
 
 ## Stack

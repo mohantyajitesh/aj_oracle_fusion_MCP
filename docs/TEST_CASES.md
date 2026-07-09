@@ -1,7 +1,7 @@
 # Test Cases & Production-Readiness Assessment
 
 Oracle Fusion HCM MCP Server. This documents the read/write tool matrix, the
-automated coverage, the manual/live checks needed against a pod, and an honest
+automated test coverage, a post-install smoke checklist for your pod, and a
 production-readiness assessment.
 
 ## 1. Tool matrix (16 tools)
@@ -41,9 +41,11 @@ production-readiness assessment.
 
 Run: `pytest -q`
 
-## 3. Live checks (require a Fusion pod) — NOT yet run here
+## 3. Post-install smoke checklist (run against YOUR pod)
 
-These validate the ADF ground truth (DESIGN §13.2) that cannot be checked offline:
+Every Fusion pod differs — licensing, roles, flexfields, release. After
+installing (see docs/INSTALL_CLAUDE_DESKTOP.md), run these once against your
+pod to confirm your deployment end to end:
 
 - [ ] `get_capabilities` shows real modules `provisioned` (concurrent probes complete < tool timeout)
 - [ ] `describe_resource workers` returns real attributes + `child_actions` on `workRelationships`
@@ -61,15 +63,17 @@ These validate the ADF ground truth (DESIGN §13.2) that cannot be checked offli
 
 | Dimension | Status | Notes |
 |---|---|---|
-| Read functionality | ✅ Built, unit-tested | Live-unverified |
-| Write safety (4-layer gate) | ✅ Built, unit-tested | Off by default; live-unverified |
+| Read functionality | ✅ Built, unit-tested | ADF behavior per pod-verified ground truth (DESIGN §13) |
+| Write safety (4-layer gate) | ✅ Built, unit-tested | Off by default |
 | Client redaction+audit floor | ✅ Built, unit-tested | Inescapable |
 | Packaging (Docker + stdio) | ✅ Verified | Image boots, 16 tools |
-| Live pod validation | ⛔ Not done | **Biggest gap** — needs a test pod |
-| Per-caller authorization | ⛔ Deferred | RBAC is at the integration user (DESIGN §14a) |
-| Capability enforcement | ⚠️ Reported not enforced | DESIGN §14b |
-| HTTP transport auth | ⚠️ None | stdio only for prod (DESIGN §14c) |
-| Audit durability | ⚠️ Local JSONL | Ship to SIEM for compliance (DESIGN §14d) |
-| OAuth2 (prod auth) | ⚠️ Working stub | App identity; validate token flow on pod |
+| Per-caller authorization | ◻ Deferred | RBAC is at the integration user (DESIGN §14a) |
+| Capability enforcement | ◻ Reported not enforced | DESIGN §14b |
+| HTTP transport auth | ◻ None yet | Use stdio for production (DESIGN §14c) |
+| Audit durability | ◻ Local JSONL | Ship to SIEM for compliance retention (DESIGN §14d) |
+| OAuth2 (prod auth) | ◻ Working stub | App identity; confirm token flow on your IDCS/IAM |
 
-**Verdict:** Ready for **supervised user testing against a non-production pod with a least-privilege integration user**, reads-only (writes off). Not ready for production until the live-pod checklist (§3) passes and the deferred items in DESIGN §14 are addressed for the intended deployment.
+**Recommended first deployment:** a non-production pod with a least-privilege,
+read-only integration user and writes left off (the default). Run the §3
+checklist, then widen scope deliberately — enable modules, then ATOM, then
+writes — as each layer proves out on your pod.
