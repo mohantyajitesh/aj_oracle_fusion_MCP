@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mohantyajitesh/fusion-hcm-mcp-server",
   "title": "HCM MCP Server for Oracle Fusion Cloud (unofficial)",
-  "description": "Open-source, write-capable MCP server for Oracle Fusion HCM: 16 tools over the ADF REST surface with PII redaction, audit logging, and dry-run gated writes. Not affiliated with Oracle.",
+  "description": "Open-source, write-capable MCP server for Oracle Fusion HCM. Safe by default. Unofficial.",
   "version": "0.1.1",
   "websiteUrl": "https://github.com/mohantyajitesh/fusion-hcm-mcp-server",
   "repository": {
