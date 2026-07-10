@@ -91,14 +91,18 @@ never the committed file. See [config.example.toml](config.example.toml).
 
 ### Run with Docker (primary)
 
+Prebuilt images are published to GitHub Container Registry on every release:
+
 ```bash
-docker build -t fusion-hcm-mcp-server .
+docker pull ghcr.io/mohantyajitesh/fusion-hcm-mcp-server:latest
 docker run --rm -i \
   -e HCM_BASE_URL="https://your-pod.fa.ocs.oraclecloud.com" \
   -e HCM_USERNAME="INTEGRATION_USER" -e HCM_PASSWORD="..." \
   -v "$PWD/config.toml:/app/config.toml:ro" \
-  fusion-hcm-mcp-server
+  ghcr.io/mohantyajitesh/fusion-hcm-mcp-server:latest
 ```
+
+Or build from source: `docker build -t fusion-hcm-mcp-server .`
 
 For hosted HTTP transport, set `transport.type = "http"` (or `HCM_TRANSPORT=http`) and publish `-p 8000:8000`.
 

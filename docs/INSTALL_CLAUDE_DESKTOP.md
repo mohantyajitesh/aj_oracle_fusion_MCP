@@ -126,12 +126,24 @@ store.
 
 ## Mode B — Docker
 
-### B1. Build the image
+### B1. Get the image
+
+Pull the prebuilt image (published on every release — no clone needed):
+
+```bash
+docker pull ghcr.io/mohantyajitesh/fusion-hcm-mcp-server:latest
+docker tag ghcr.io/mohantyajitesh/fusion-hcm-mcp-server:latest fusion-hcm-mcp-server:latest
+```
+
+Or build from a source checkout:
 
 ```bash
 cd fusion-hcm-mcp-server-main
 docker build -t fusion-hcm-mcp-server:latest .
 ```
+
+(Either way you end up with a local `fusion-hcm-mcp-server:latest`, which the
+Desktop config below references.)
 
 ### B2. Create `config.toml` (as in A3, but no password anywhere)
 
