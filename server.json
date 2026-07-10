@@ -1,0 +1,49 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mohantyajitesh/fusion-hcm-mcp-server",
+  "title": "HCM MCP Server for Oracle Fusion Cloud (unofficial)",
+  "description": "Open-source, write-capable MCP server for Oracle Fusion HCM: 16 tools over the ADF REST surface with PII redaction, audit logging, and dry-run gated writes. Not affiliated with Oracle.",
+  "version": "0.1.1",
+  "websiteUrl": "https://github.com/mohantyajitesh/fusion-hcm-mcp-server",
+  "repository": {
+    "url": "https://github.com/mohantyajitesh/fusion-hcm-mcp-server",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "fusion-hcm-mcp-server",
+      "version": "0.1.1",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "HCM_BASE_URL",
+          "description": "Oracle Fusion pod base URL, e.g. https://your-pod.fa.us6.oraclecloud.com",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "HCM_USERNAME",
+          "description": "Fusion integration user (least-privilege, read-only HCM roles recommended)",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "HCM_PASSWORD",
+          "description": "Integration user password (basic auth). Alternatively store in the OS credential store under service 'fusion-hcm-mcp-server' and omit this.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "CONFIG_FILE",
+          "description": "Optional path to a config.toml for advanced settings (modules, feature flags, OAuth2, limits). Env vars override file values.",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

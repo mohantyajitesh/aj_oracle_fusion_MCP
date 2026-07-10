@@ -1,5 +1,7 @@
 # HCM MCP Server for Oracle Fusion Cloud (unofficial)
 
+<!-- mcp-name: io.github.mohantyajitesh/fusion-hcm-mcp-server -->
+
 > *Not affiliated with or endorsed by Oracle. Oracle and Fusion are trademarks of Oracle Corporation.*
 
 An [MCP](https://modelcontextprotocol.io) server that lets AI models interact with **Oracle Fusion Cloud HCM** across its entire REST surface — workers, org structures, compensation, absence, payroll, recruiting, talent, learning and more — without hand-coding a tool per endpoint.

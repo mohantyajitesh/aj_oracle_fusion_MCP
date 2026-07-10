@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fusion-hcm-mcp-server"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server for Oracle Fusion Cloud HCM — generic, capability-aware, safe-by-default."
 readme = "README.md"
 license = { text = "Apache-2.0" }

@@ -4,6 +4,14 @@ All notable changes to this project are documented here. Format loosely
 follows [Keep a Changelog](https://keepachangelog.com/); versions follow
 [SemVer](https://semver.org/).
 
+## [0.1.1] — 2026-07-09
+
+### Added
+- MCP Registry metadata: `server.json` (namespace
+  `io.github.mohantyajitesh/fusion-hcm-mcp-server`) and the `mcp-name`
+  ownership marker in the README, as required for PyPI package verification
+  by the official MCP Registry. No functional changes.
+
 ## [0.1.0] — 2026-07-09
 
 First public release.
